@@ -1,0 +1,41 @@
+﻿@using Project.Web.Models;
+@model CardsModel
+@{
+    ViewBag.Title = "ViewCard";
+}
+
+<h2>ViewCard</h2>
+
+
+<div>
+    <div>
+        @Model.Message
+    </div>
+
+    <div>
+        <img src="@Url.Content("~/Content/img/" + Model.ImageName)" />
+        <div>
+            <form action="@Url.Action("CreateCard", "ECard", new { id = Model.TemplateId })" method="get">
+                <button>Edit Card</button>
+            </form>
+
+            <form action="@Url.Action("Index", "Home")" method="post">
+                <button>Choose New Troll</button>
+            </form>
+
+            <form action="@Url.Action("Index", "Home", new { id = Model.TemplateId })" method="post">
+                <button>Send!</button>
+            </form>
+        </div>
+    </div>
+    @*</div>
+
+            <input type="submit" value="Send" name="action:Send" />
+            <input type="submit" value="Edit Card" name="action:EditCard" />
+
+        </div>*@
+</div>
+
+@*<input type="submit" value="Send" name="action:Send" />
+<input type="submit" value="Edit Card" name="action:EditCard" />*@
+

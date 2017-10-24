@@ -1,0 +1,19 @@
+﻿@using Project.Web.Models;
+@model List<CardsModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="columns">
+@foreach (var c in Model)
+{
+    <figure>
+        <a href="@Url.Action("CreateCard", "ECard", new { id = c.CardId })">
+            <img class="img-responsive" src="@Url.Content("~/Content/img/" + c.ImageName)" alt="@c.CardName" />
+        </a>
+    </figure>
+}
+</div>
+
