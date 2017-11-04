@@ -11,6 +11,7 @@ namespace Project.Web.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Project.Web.DAL;
+    using Project.Web.DeliveryProviders;
 
     public static class NinjectWebCommon 
     {
@@ -63,6 +64,7 @@ namespace Project.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IECardDAL>().To<ECardSqlDAL>();
+            kernel.Bind<IDeliveryService>().To<EmailDeliveryService>();
         }        
     }
 }

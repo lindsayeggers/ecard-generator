@@ -89,14 +89,14 @@ namespace Project.Web.DAL
                 using(SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    CardsModel e = new CardsModel();
+                    
                     SqlCommand cmd = new SqlCommand(SQL_SaveCard, conn);
-                    cmd.Parameters.AddWithValue("@template_id", e.TemplateId);
-                    cmd.Parameters.AddWithValue("@to_email", e.ToEmail);
-                    cmd.Parameters.AddWithValue("@to_name", e.ToName);
-                    cmd.Parameters.AddWithValue("@message", e.Message);
-                    cmd.Parameters.AddWithValue("@from_name", e.FromName);
-                    cmd.Parameters.AddWithValue("@from_email", e.FromEmail);
+                    cmd.Parameters.AddWithValue("@template_id", c.TemplateId);
+                    cmd.Parameters.AddWithValue("@to_email", c.ToEmail);
+                    cmd.Parameters.AddWithValue("@to_name", c.ToName);
+                    cmd.Parameters.AddWithValue("@message", c.Message);
+                    cmd.Parameters.AddWithValue("@from_name", c.FromName);
+                    cmd.Parameters.AddWithValue("@from_email", c.FromEmail);
 
                     cmd.ExecuteNonQuery();
 

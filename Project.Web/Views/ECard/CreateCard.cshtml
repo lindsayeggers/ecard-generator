@@ -8,47 +8,55 @@
 <h2>Create Your e-Card</h2>
 
 
+<div class-container>
+    <form action="@Url.Action("CreateCard", "ECard")" method="post">
+        <div class="row">
 
-<form action="@Url.Action("CreateCard", "ECard")" method="post">
-    <div class="row">
-        <div class="col-sm-4">
-            <img class="img-responsive" src="@Url.Content("~/Content/img/test.jpg")" />
+            <div class="col-sm-3">
+                <img class="img-responsive" src="@Url.Content("~/Content/img/test.jpg")" />
+                <p class="example">Example Card</p>
+            </div>
+
+
+
+
+            <div class="col-sm-4">
+                <img class="img-responsive" src="@Url.Content("~/Content/img/" + Model.ImageName)" />
+            </div>
+
+
+            <div class="col-sm-5">
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.TemplateId)
+
+                    @Html.LabelFor(m => m.FromName)
+                    @Html.TextBoxFor(m => m.FromName, new { @class = "form-control", placeholder = "your name" })
+                    @Html.ValidationMessageFor(m => m.FromName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromEmail)
+                    @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control", placeholder = "your email" })
+                    @Html.ValidationMessageFor(m => m.FromEmail)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ToName)
+                    @Html.TextBoxFor(m => m.ToName, new { @class = "form-control", placeholder = "recipient name" })
+                    @Html.ValidationMessageFor(m => m.ToName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ToEmail)
+                    @Html.TextBoxFor(m => m.ToEmail, new { @class = "form-control", placeholder = "recipient email" })
+                    @Html.ValidationMessageFor(m => m.ToEmail)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message)
+                    @Html.TextBoxFor(m => m.Message, new { @class = "form-control", placeholder = "enter your message" })
+                    @Html.ValidationMessageFor(m => m.Message)
+                </div>
+                <button>View Card</button>
+            </div>
         </div>
+     
 
-
-        <div class="col-sm-4">
-            <img class="img-responsive" src="@Url.Content("~/Content/img/" + Model.ImageName)" />
-        </div>
-
-
-        <div class="col-sm-8">
-            <div class="form-group">
-                @Html.HiddenFor(m => m.TemplateId)
-                @*@Html.HiddenFor(m => m.TemplateId)*@
-
-                @Html.LabelFor(m => m.FromName)
-                @Html.TextBoxFor(m => m.FromName, new { @class = "form-control", placeholder = "your name" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.FromEmail)
-                @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control", placeholder = "your email" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.ToName)
-                @Html.TextBoxFor(m => m.ToName, new { @class = "form-control", placeholder = "recipient name" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.ToEmail)
-                @Html.TextBoxFor(m => m.ToEmail, new { @class = "form-control", placeholder = "recipient email" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Message)
-                @Html.TextBoxFor(m => m.Message, new { @class = "form-control", placeholder = "enter your message" })
-            </div>
-            <button>View Card</button>
-        </div>
-    </div>
-
-
-
-</form>
+    </form>
+</div>

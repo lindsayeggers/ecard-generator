@@ -1,12 +1,12 @@
 ﻿@font-face {
-    font-family: 'Calluna';
-    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/callunasansregular-webfont.woff') format('woff');
+    font-family: 'Noto Serif', serif;
+    src: url('https://fonts.googleapis.com/css?family=Noto+Serif:700i');
 }
 
 body {
     background: url(//subtlepatterns.com/patterns/scribble_light.png);
-    font-family: Calluna, Arial, sans-serif;
-    min-height: 1000px;
+ 
+    
 }
 
 #columns {
@@ -75,6 +75,10 @@ div#columns:hover figure:not(:hover) {
     
 }
 
+.container.body-content{
+    margin: 60px;
+}
+
 .row {
     margin-bottom: 50px;
     display: inline-flex;
@@ -83,3 +87,51 @@ div#columns:hover figure:not(:hover) {
 .col-sm-8 {
     margin-left: 200px;
 }
+
+
+.col-sm-4 img {
+    border: 15px solid white;
+    
+}
+
+.col-sm-3 img {
+    border: 10px double black;
+}
+
+.row-example{
+    display: block;
+}
+
+.example{
+    font-size: 20px;
+}
+
+.field-validation-error {
+    color: tomato;
+}
+
+.thumbnail {
+    position: relative;
+}
+
+.caption {
+    position: absolute;
+    top: 70%;
+    left: 0;
+    width: 100%;
+    font-size: 70px;
+    font-family: 'Noto Serif', serif;
+    color: red;
+
+     -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 white,
+     -1px -1px 0 white,  
+      1px -1px 0 white,
+      -1px 1px 0 white,
+       1px 1px 0 white;
+}
+
+
+/*dashed, dotted, double, groove, ridge, inset or outset*/

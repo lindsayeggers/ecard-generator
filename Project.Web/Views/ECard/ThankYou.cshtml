@@ -1,10 +1,11 @@
 ﻿@using Project.Web.Models;
 @model List<CardsModel>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ThankYou";
 }
 
-<h2></h2>
+<h2>Your card has been sent!</h2>
 
 <div id="columns">
     @foreach (var c in Model)
@@ -16,5 +17,3 @@
         </figure>
     }
 </div>
-
-

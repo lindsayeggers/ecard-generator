@@ -4,38 +4,37 @@
     ViewBag.Title = "ViewCard";
 }
 
-<h2>ViewCard</h2>
 
 
-<div>
-    <div>
-        @Model.Message
-    </div>
 
-    <div>
-        <img src="@Url.Content("~/Content/img/" + Model.ImageName)" />
-        <div>
-            <form action="@Url.Action("CreateCard", "ECard", new { id = Model.TemplateId })" method="get">
-                <button>Edit Card</button>
-            </form>
-
-            <form action="@Url.Action("Index", "Home")" method="post">
-                <button>Choose New Troll</button>
-            </form>
-
-            <form action="@Url.Action("Index", "Home", new { id = Model.TemplateId })" method="post">
-                <button>Send!</button>
-            </form>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <img src="@Url.Content("~/Content/img/" + Model.ImageName)" alt="troll pic" class="img-responsive" />
+            <div class="carousel-caption">
+                <h2> @Model.Message</h2>
+            </div>
         </div>
     </div>
-    @*</div>
 
-            <input type="submit" value="Send" name="action:Send" />
-            <input type="submit" value="Edit Card" name="action:EditCard" />
 
-        </div>*@
+    
+        <div class="col-xs-6">
+            <div>
+                <form action="@Url.Action("EditCard", "ECard", new { id = Model.TemplateId })" method="get">
+                    <button>Edit Card</button>
+                </form>
+
+                <form action="@Url.Action("Index", "Home")" method="post">
+                    <button>Choose New Troll</button>
+                </form>
+
+                <form action="@Url.Action("SaveCard", "ECard", new { id = Model.TemplateId })" method="post">
+                    <button>Send!</button>
+                </form>
+            </div>
+        </div>
+
 </div>
 
-@*<input type="submit" value="Send" name="action:Send" />
-<input type="submit" value="Edit Card" name="action:EditCard" />*@
 

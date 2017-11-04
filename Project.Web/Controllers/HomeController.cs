@@ -22,5 +22,7 @@ namespace Project.Web.Controllers
 
             return View("Index", cards);
         }
+
+       
     }
 }
