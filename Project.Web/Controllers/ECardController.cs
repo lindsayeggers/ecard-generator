@@ -3,6 +3,8 @@ using Project.Web.DeliveryProviders;
 using Project.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -76,7 +78,34 @@ namespace Project.Web.Controllers
             CardsModel c = Session["CurrentCard"] as CardsModel;
             dal.SaveNewCard(c);
 
-            deliveryService.Send(c.ToEmail, "C:\Users\Lindsay Eggers\Desktop\m3-w9-project-COPY\Project.Web\Content\img\3Trolls.jpg");
+            CardsModel template = dal.GetATemplate(c.TemplateId);
+            
+
+            //creating a image object
+            System.Drawing.Image bitmap = (System.Drawing.Image)Bitmap.FromFile(Server.MapPath($"~/Content/img/{template.ImageName}")); // set image 
+                                                                                                             
+            Graphics graphicsImage = Graphics.FromImage(bitmap);
+
+            //Set the alignment based on the coordinates   
+            StringFormat stringformat = new StringFormat();
+            stringformat.Alignment = StringAlignment.Far;
+            stringformat.LineAlignment = StringAlignment.Far;
+
+
+            //Set the font color/format/size etc..  
+            Color StringColor = System.Drawing.ColorTranslator.FromHtml("#933eea");//direct color adding
+            string Str_TextOnImage = c.Message;//Your Text On Image
+
+            graphicsImage.DrawString(Str_TextOnImage, new Font("arial", 40,
+            FontStyle.Regular), new SolidBrush(StringColor), new Point(268, 245),
+            stringformat); 
+
+
+            var randomFileName = Guid.NewGuid().ToString() + ".jpg";
+            var finalFilePath = Server.MapPath($"~/Content/img/{randomFileName}");
+            bitmap.Save(finalFilePath);
+
+            deliveryService.Send(c.ToEmail, finalFilePath);
 
             Session["CurrentCard"] = null;
 
