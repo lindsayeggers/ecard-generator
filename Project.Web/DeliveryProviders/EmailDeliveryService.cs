@@ -12,11 +12,12 @@ namespace Project.Web.DeliveryProviders
         public void Send(string recipient, string filePath)
         {
             MailMessage msg = new MailMessage();
-
+            msg.IsBodyHtml = true;
             msg.From = new MailAddress("trollingwithtrolls@gmail.com");
             msg.To.Add(recipient);
             msg.Subject = "Someone has sent you a troll! " + DateTime.Now.ToString();
-            msg.Body = filePath;
+            String body = "To send your own message, visit us at <a href='http://www.trollingtrolls.apphb.com'>Trolling Trolls!</a>";
+            msg.Body = body;
             var attachment = new Attachment(filePath);
             msg.Attachments.Add(attachment);
             //msg.Attachments.Add()
