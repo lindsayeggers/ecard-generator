@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -58,7 +60,16 @@ namespace Project.Web.Models
             //FontStyle.Bold), new SolidBrush(StringColor), new Point(368, 545),
             //stringformat);
 
-            bitmap.Save(finalImagePath);
+            //bitmap.Save(finalImagePath);
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using(FileStream fs = new FileStream(finalImagePath, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    bitmap.Save(memory, ImageFormat.Jpeg);
+                    byte[] bytes = memory.ToArray();
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+            }
         }
     }
 }
